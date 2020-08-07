@@ -2,6 +2,8 @@
 
 ####
 # this script installs Docker, Kubectl and Minikube to prepare Kubernetes enviroment
+# If minikube start fails the first time it's due to sudo priviliges not yet applied to docker command.
+# restart your console and run the script again. 
 ####
 
 # install Docker and add allow it to run without sudo prefix
