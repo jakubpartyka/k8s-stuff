@@ -80,23 +80,20 @@ echo "removing duplicates..."
 # REMOVE DUPLICATES
 cat $OUTPUT_FOUND | uniq > of.tmp
 mv of.tmp $OUTPUT_FOUND
-rm of.tmp
-TMP=$(wc -l $OUTPUT__FOUND)
+TMP=$(wc -l $OUTPUT_FOUND | awk '{print $1}')
 ((TMP--))
-echo "$TMP unique images were checked" 
+echo "$TMP unique images were checked successfully" 
 
 cat $OUTPUT_NOT_FOUND | uniq > onf.tmp
 mv onf.tmp $OUTPUT_NOT_FOUND
-rm onf.tmp
-TMP=$(wc -l $OUTPUT_NOT_FOUND)
+TMP=$(wc -l $OUTPUT_NOT_FOUND | awk '{print $1}')
 ((TMP--))
 echo "$TMP images couldn't be checked"
 
 
-cat $_OUTPUT_TO_CHECK | uniq > tc.tmp
+cat $OUTPUT_TO_CHECK | uniq > tc.tmp
 mv tc.tmp $OUTPUT_TO_CHECK
-rm tc.tmp
-TMP=$(wc -l $OUTPUT_TO_CHECK)
+TMP=$(wc -l $OUTPUT_TO_CHECK | awk '{print $1}')
 ((TMP--))
 echo "$TMP pods needs to be checked manually"
 
